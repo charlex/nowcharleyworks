@@ -1,0 +1,65 @@
+{
+    "run_list": [
+        "datadesk::default",
+        "datadesk::python",
+        "datadesk::postgresql",
+        "datadesk::apps",
+        "datadesk::apache",
+        "datadesk::cron",
+        "datadesk::motd"
+    ],
+    "base_packages": [
+        "git-core",
+        "bash-completion",
+        "zip",
+        "unzip",
+        "curl",
+        "libfreetype6-dev",
+        "libjpeg-dev",
+        "libxml-parser-perl"
+    ],
+
+    "users": {
+        "charlex": {
+          "id": 1003,
+          "full_name": "charlex"
+        }
+    },
+
+    "groups": {
+        "charlex": {
+          "gid": 203,
+          "members": ["charlex"]
+        }
+    },
+
+    "ubuntu_python_packages": [
+        "python-setuptools",
+        "python-pip",
+        "python-dev",
+        "libpq-dev",
+        "python-virtualenv",
+        "fabric"
+    ],
+
+    "pip_python_packages": {},
+
+    "apps_user": "charlex",
+    "apps_group": "charlex",
+    "apps_password": "charlex",
+
+    "app": {
+        "name": "nowcharleyworks",
+        "repo": "git@github.com:charlex/nowcharleyworks.git",
+        "branch": "master",
+        "db_user": "postgres",
+        "db_name": "nowcharleyworks",
+        "db_password": "39kO520n%jpt",
+        "apache_server_name": "52.9.186.157",
+        "management": ["migrate", "createentrant"]
+    },
+
+    "apache_port": "80",
+
+    "crons": {}
+}

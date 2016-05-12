@@ -1,0 +1,22 @@
+{% load static humanize %}
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
+
+    <title>Rockbot</title>
+</head>
+
+<body>
+    {{ query }} - {{ definition }}
+    <h1>{{ track.name }}</h1>
+    <h2>{{ track.match }}</h2>
+    <iframe src="https://embed.spotify.com/?uri={{ track.uri }}"
+    width="500" height="100" frameborder="0" allowtransparency="true"></iframe>
+    <script>
+        Window.CSRF_TOKEN = "{{ csrf_token }}";
+    </script>
+</body>
+</html>

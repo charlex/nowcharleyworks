@@ -1,0 +1,43 @@
+{% load static humanize %}
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
+
+    <title>Now Charley Works</title>
+    <link rel="stylesheet" href="{% static 'nowcharleyworks/css/styles.css' %}">
+</head>
+
+<body>
+    <div id="container">
+        <h1>What is Charley working on now?</h1>
+        <form id="input-form">
+            {% csrf_token %}
+            <label for="thing-input">
+                <input id="thing-input" type="text">
+            </label>
+            <label for="thing-submit">
+                <input id="thing-submit" type="submit" value="Log it">
+            </label>
+        </form>
+
+        <ul id="past-things">
+            {% for thing in things %}
+                <li class="thing" data-pk="{{ thing.pk }}">
+                    <span class="thing-name">{{ thing.name }}</span>
+                    <time class="thing-create-datetime timeago" datetime={{ thing.create_datetime|date:"c" }}>{{ thing.create_datetime|date:"l g:i A" }}</time>
+                    <a href="#" class="archive-thing">Archive</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <script>
+        Window.CSRF_TOKEN = "{{ csrf_token }}";
+    </script>
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+    <script src="{% static 'nowcharleyworks/js/timeago.js' %}"></script>
+    <script src="{% static 'nowcharleyworks/js/script.js' %}"></script>
+</body>
+</html>

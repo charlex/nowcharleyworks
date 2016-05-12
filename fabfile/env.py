@@ -4,7 +4,7 @@ from os.path import expanduser
 
 @task
 def prod():
-    env.hosts = ("52.9.186.157",)
+    env.hosts = ("charley@ssh.pythonanywhere.com",)
     env.branch = 'master'
 
 prod()

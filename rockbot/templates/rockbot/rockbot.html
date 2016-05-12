@@ -10,13 +10,15 @@
 </head>
 
 <body>
-    {{ query }} - {{ definition }}
-    <h1>{{ track.name }}</h1>
-    <h2>{{ track.match }}</h2>
-    <iframe src="https://embed.spotify.com/?uri={{ track.uri }}"
-    width="500" height="100" frameborder="0" allowtransparency="true"></iframe>
+    <h1>{{ tweet }}</h1>
+    <p style="text-align:center;margin:100px;">
+        <a href="https://twitter.com/share?url=/" class="twitter-share-button" data-url="" data-text="{{ tweet|escape }}" data-size="large">Tweet</a>
+        <iframe src="https://embed.spotify.com/?uri={{ song_url }}" border="0" style="border:0;width:300px;margin:0 auto;" ></iframe>
+    </p>
+
     <script>
         Window.CSRF_TOKEN = "{{ csrf_token }}";
     </script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </body>
 </html>

@@ -19,6 +19,16 @@ $(document).ready(function(){
         process_delete(pk);
     });
 
+    $("#past-things").on("click", ".thing .thing-name", function(e){
+        e.preventDefault()
+        var text = $(this).text();
+        $input_form = $("input", {
+            val: text
+        });
+        console.log($input_form);
+        $(this).innerHtml($input_form);
+    });
+
     var process_save = function(){
         var name = $("#thing-input").val();
         $.ajax({

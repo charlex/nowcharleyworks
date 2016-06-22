@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.views.static import serve
 from django.conf.urls import patterns, include, url
 from nowcharleyworks import views
+from slackbot import views
 urlpatterns = patterns(
     '',
     url(r'^static/(?P<path>.*)$', serve, {
@@ -41,5 +42,13 @@ urlpatterns += patterns(
         r'^rockbot/$',
         'rockbot',
         name='rockbot'
+    ),
+)
+urlpatterns += patterns(
+    'slackbot.views',
+    url(
+        r'^slackbot/$',
+        'respond',
+        name='respond'
     ),
 )

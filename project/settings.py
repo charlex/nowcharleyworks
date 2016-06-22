@@ -106,7 +106,8 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.sitemaps',
     'nowcharleyworks',
-    'rockbot'
+    'rockbot',
+    'slackbot'
 )
 
 # Logging
